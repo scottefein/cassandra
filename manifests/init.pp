@@ -17,7 +17,7 @@ class cassandra (
   $cas_contention_timeout_in_ms                         = 1000,
   $cassandra_9822                                       = false,
   $cassandra_yaml_tmpl
-    = 'cassandra/cassandra.yaml.erb',
+    = 'cassandra/cassandra2.yaml.erb',
   $client_encryption_algorithm                          = undef,
   $client_encryption_cipher_suites                      = undef,
   $client_encryption_enabled                            = false,

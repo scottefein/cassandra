@@ -43,7 +43,7 @@ describe 'cassandra' do
         'batch_size_warn_threshold_in_kb' => 5,
         'cas_contention_timeout_in_ms' => 1000,
         'cassandra_9822' => false,
-        'cassandra_yaml_tmpl' => 'cassandra/cassandra.yaml.erb',
+        'cassandra_yaml_tmpl' => 'cassandra/cassandra2.yaml.erb',
         'client_encryption_enabled' => false,
         'client_encryption_keystore' => 'conf/.keystore',
         'client_encryption_keystore_password' => 'cassandra',
