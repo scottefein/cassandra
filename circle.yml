@@ -4,6 +4,9 @@ machine:
 
 test:
   override:
+    - bundle exec rake lint
+    - bundle exec rake validate
+    - bundle exec rake spec SPEC_OPTS="--format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml"
     - BEAKER_set=centos6 bundle exec rake beaker:
         timeout: 200
     - BEAKER_set=centos7 bundle exec rake beaker:
@@ -15,13 +18,7 @@ test:
     - BEAKER_set=debian7 bundle exec rake beaker:
         timeout: 200
 
-deployment:
-  commands:
-    - bundle exec rake build
-
 general:
-  artifacts:
-    - "pkg"
   branches:
     only:
       - circleci
