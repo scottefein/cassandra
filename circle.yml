@@ -3,17 +3,28 @@ machine:
     - docker
 
 test:
-  post:
+  override:
     - BEAKER_set=centos6 bundle exec rake beaker
+        timeout: 200
     - BEAKER_set=centos7 bundle exec rake beaker
+        timeout: 200
     - BEAKER_set=ubuntu12.04 bundle exec rake beaker
+        timeout: 200
     - BEAKER_set=ubuntu14.04 bundle exec rake beaker
+        timeout: 200
     - BEAKER_set=debian7 bundle exec rake beaker
+        timeout: 200
+
+depoloyment:
+  commands:
     - bundle exec rake build
 
 general:
   artifacts:
     - "pkg"
+  branches:
+    only:
+      - /v[0-9]+(\.[0-9]+)*/
 
 notify:
   webhooks:
