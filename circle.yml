@@ -24,6 +24,7 @@ general:
     - "pkg"
   branches:
     only:
+      - circleci
       - /v[0-9]+(\.[0-9]+)*/
 
 notify:
