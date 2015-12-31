@@ -4,15 +4,15 @@ machine:
 
 test:
   override:
-    - BEAKER_set=centos6 bundle exec rake beaker
+    - BEAKER_set=centos6 bundle exec rake beaker:
         timeout: 200
-    - BEAKER_set=centos7 bundle exec rake beaker
+    - BEAKER_set=centos7 bundle exec rake beaker:
         timeout: 200
-    - BEAKER_set=ubuntu12.04 bundle exec rake beaker
+    - BEAKER_set=ubuntu12.04 bundle exec rake beaker:
         timeout: 200
-    - BEAKER_set=ubuntu14.04 bundle exec rake beaker
+    - BEAKER_set=ubuntu14.04 bundle exec rake beaker:
         timeout: 200
-    - BEAKER_set=debian7 bundle exec rake beaker
+    - BEAKER_set=debian7 bundle exec rake beaker:
         timeout: 200
 
 depoloyment:
