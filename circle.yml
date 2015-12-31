@@ -1,8 +1,13 @@
+machine:
+  services:
+    - docker
+
 test:
   post:
     - bundle exec rake lint
     - bundle exec rake validate
     - bundle exec rake spec
+    - BEAKER_set=debian7 bundle exec rake beaker
     - bundle exec rake build
 
 general:
