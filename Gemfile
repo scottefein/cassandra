@@ -4,6 +4,7 @@ puppetversion = ENV.key?('PUPPET_GEM_VERSION') ? " #{ENV['PUPPET_GEM_VERSION']}"
 gem 'puppet', puppetversion
 gem 'facter', '>= 1.7.0'
 
+
 group :system_tests do
   gem 'coveralls',              :require => false
   gem 'docker-api',             :require => false
@@ -18,6 +19,7 @@ group :system_tests do
   gem 'serverspec',             :require => false
   gem 'metadata-json-lint',     :require => false
   gem 'puppet-lint',            :require => false
+  gem 'rspec_junit_formatter',  '0.2.2'
   gem 'travis',                 :require => false
   gem 'travis-lint',            :require => false
 end
