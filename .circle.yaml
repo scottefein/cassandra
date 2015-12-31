@@ -1,0 +1,10 @@
+test:
+  post:
+    - bundle exec rake lint
+    - bundle exec rake validate
+    - bundle exec rake spec
+    - bundle exec rake build
+
+general:
+  artifacts:
+    - "pkg"
