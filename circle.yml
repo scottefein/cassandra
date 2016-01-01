@@ -15,7 +15,7 @@ test:
     - bundle exec rake spec SPEC_OPTS="--format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/puppet3.xml":
         environment:
           PUPPET_GEM_VERSION: '~> 3.0'
-    - bundle install --without development
+    - bundle install --without development:
         environment:
           PUPPET_GEM_VERSION: '~> 4.0'
           STRICT_VARIABLES: 'yes'
