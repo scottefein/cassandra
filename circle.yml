@@ -4,6 +4,7 @@ machine:
 
 dependencies:
   override:
+    - bundle update puppet
     - bundle install --without development:
         environment:
           PUPPET_GEM_VERSION: '~> 3.0'
