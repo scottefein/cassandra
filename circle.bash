@@ -3,6 +3,8 @@
 # A script for splitting the test suite across nodes on CircleCI.
 #############################################################################
 
+export PATH=/home/ubuntu/.rvm/gems/ruby-1.9.3-p448/bin:$PATH
+
 unit_tests () {
   status=0
 
@@ -23,7 +25,8 @@ unit_tests () {
   esac
 
   rvm use $RVM --install --fuzzy
-  export BUNDLE_GEMFILE=$PWD/Gemfile
+  export BUNDLE_GEMFILE=$PWD/Gemfile.lock
+  rm -v Gemfile.
   ruby --version
   rvm --version
   bundle --version
