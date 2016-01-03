@@ -5,6 +5,7 @@ machine:
 test:
   override:
     - bash circle.bash unit_tests
+    - bundle exec rake validate
 
 general:
   branches:
