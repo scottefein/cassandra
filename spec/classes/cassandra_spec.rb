@@ -134,6 +134,10 @@ describe 'cassandra' do
         'write_request_timeout_in_ms' => 2000,
       )
     }
+
+    it {
+      should contain_cassandra__private__data_directory('/var/lib/cassandra/data')
+    }
   end
 
   context 'On an unsupported OS pleading tolerance (with dyslexia)' do
@@ -260,5 +264,24 @@ describe 'cassandra' do
       should contain_service('cassandra').that_subscribes_to('Ini_setting[rackdc.properties.rack]') 
       should contain_service('cassandra').that_subscribes_to('Package[cassandra]') 
     }
+  end
+
+  context 'Test that interface can be specified instead of an IP address.' do
+    let :facts do
+      {
+        :osfamily => 'RedHat'
+      }
+    end
+
+    let :params do
+      {
+        :config_path      => '/etc',
+        :listen_interface => 'ethX',
+        :rpc_interface    => 'ethY'
+      }
+    end
+
+    it { should contain_file('/etc/cassandra.yaml').with_content(/listen_interface: ethX/) }
+    it { should contain_file('/etc/cassandra.yaml').with_content(/rpc_interface: ethY/) }
   end
 end

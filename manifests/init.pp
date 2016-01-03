@@ -80,6 +80,7 @@ class cassandra (
   $key_cache_save_period                                = 14400,
   $key_cache_size_in_mb                                 = '',
   $listen_address                                       = 'localhost',
+  $listen_interface                                     = undef,
   $manage_dsc_repo                                      = false,
   $max_hints_delivery_threads                           = 2,
   $max_hint_window_in_ms                                = 10800000,
@@ -114,6 +115,7 @@ class cassandra (
   $row_cache_save_period                                = 0,
   $row_cache_size_in_mb                                 = 0,
   $rpc_address                                          = 'localhost',
+  $rpc_interface                                        = undef,
   $rpc_max_threads                                      = undef,
   $rpc_min_threads                                      = undef,
   $rpc_port                                             = 9160,
@@ -263,7 +265,7 @@ class cassandra (
     }
   }
 
-  cassandra::data_directory { $data_file_directories: }
+  cassandra::private::data_directory { $data_file_directories: }
 
   if ! defined( File[$saved_caches_directory] ) {
     file { $saved_caches_directory:
