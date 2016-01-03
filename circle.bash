@@ -25,8 +25,8 @@ unit_tests () {
   esac
 
   rvm use $RVM --install --fuzzy
-  export BUNDLE_GEMFILE=$PWD/Gemfile.lock
-  rm -v Gemfile.
+  export BUNDLE_GEMFILE=$PWD/Gemfile
+  rm -f Gemfile.lock
   ruby --version
   rvm --version
   bundle --version
