@@ -14,7 +14,7 @@ acceptance_tests () {
   i=0
 
   for node in $BEAKER_NODES; do
-    if [ $(($i % $CIRCLE_NODE_TOTAL)) -eq $CIRCLE_NODE_INDEX ]; do
+    if [ $(($i % $CIRCLE_NODE_TOTAL)) -eq $CIRCLE_NODE_INDEX ]; then
       BEAKER_set=$node bundle exec rake beaker
     fi
 
