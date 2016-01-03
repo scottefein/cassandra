@@ -2,13 +2,6 @@ machine:
 #  services:
 #    - docker
 
-dependencies:
-  override:
-    - gem uninstall puppet -a
-    - bundle install --without development:
-        environment:
-          PUPPET_GEM_VERSION: '~> 3.0'
-
 test:
   override:
     - bash circle.bash unit_tests:
