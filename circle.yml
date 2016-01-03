@@ -4,7 +4,9 @@ machine:
 
 test:
   override:
-    - case $CIRCLE_NODE_INDEX in 0) bash circle.bash unit_tests ;; 1) bash circle.bash unit_tests ;; 2) bash circle.bash unit_tests ;; 3) bash circle.bash unit_tests ;; esac:
+    - case $CIRCLE_NODE_INDEX in 0) rake lint ;; 1) rake validate ;; esac:
+        parallel: true
+#    - case $CIRCLE_NODE_INDEX in 0) bash circle.bash unit_tests ;; 1) bash circle.bash unit_tests ;; 2) bash circle.bash unit_tests ;; 3) bash circle.bash unit_tests ;; esac:
         parallel: true
 
 general:
