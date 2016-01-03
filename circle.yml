@@ -1,15 +1,28 @@
 machine:
+  services:
+    - docker
 
 test:
   override:
     - bundle exec rake lint
     - bundle exec rake validate
     - bundle exec rake spec SPEC_OPTS="--format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml"
+#    - BEAKER_set=centos6 bundle exec rake beaker:
+#        timeout: 200
+#    - BEAKER_set=centos7 bundle exec rake beaker:
+#        timeout: 200
+#    - BEAKER_set=ubuntu12.04 bundle exec rake beaker:
+#        timeout: 200
+#    - BEAKER_set=ubuntu14.04 bundle exec rake beaker:
+#        timeout: 200
+#    - BEAKER_set=debian7 bundle exec rake beaker:
+#        timeout: 200
 
 general:
   branches:
     only:
       - circleci
+      - /v[0-9]+(\.[0-9]+)*/
 
 notify:
   webhooks:
