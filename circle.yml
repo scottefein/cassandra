@@ -4,7 +4,8 @@ machine:
 
 test:
   override:
-    - ./circle.bash unit_tests
+    - ./circle.bash unit_tests:
+        parallel: true
 
 general:
   branches:
