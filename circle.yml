@@ -4,7 +4,7 @@ machine:
 
 test:
   override:
-    - ./circle.bash unit_tests
+    - bash -ls ./circle.bash unit_tests
 
 general:
   branches:
