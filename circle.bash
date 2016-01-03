@@ -7,6 +7,23 @@
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 export PATH=/home/ubuntu/.rvm/gems/ruby-1.9.3-p448/bin:$PATH
 
+acceptance_tests () {
+  status=0
+  BEAKER_NODES="centos6 centos7 debian7 ubuntu12.04 ubuntu14.04"
+
+  i=0
+
+  for node in $BEAKER_NODES; do
+    if [ $(($i % $CIRCLE_NODE_TOTAL)) -eq $CIRCLE_NODE_INDEX ]
+      BEAKER_set=$node bundle exec rake beaker
+    fi
+
+    ((i=i+1))
+  done
+
+  return $status
+}
+
 unit_tests () {
   status=0
 

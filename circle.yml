@@ -6,12 +6,13 @@ test:
   override:
     - ./circle.bash unit_tests:
         parallel: true
+    - ./circle.bash acceptance_tests:
+        parallel: true
 
 general:
   branches:
     only:
       - circleci
-      - /v[0-9]+(\.[0-9]+)*/
 
 notify:
   webhooks:
