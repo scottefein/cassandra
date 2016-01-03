@@ -3,6 +3,8 @@
 # A script for splitting the test suite across nodes on CircleCI.
 #############################################################################
 
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 export PATH=/home/ubuntu/.rvm/gems/ruby-1.9.3-p448/bin:$PATH
 
 unit_tests () {
