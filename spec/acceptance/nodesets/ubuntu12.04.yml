@@ -7,7 +7,7 @@ HOSTS:
     hypervisor: docker
     docker_cmd: '["/sbin/init"]'
     docker_image_commands:
-      - 'apt-get install -y sudo ufw wget'
+      - 'apt-get install -y sudo iptables wget'
 CONFIG:
   type: foss
   log_level: info
