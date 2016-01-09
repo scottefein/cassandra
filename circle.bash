@@ -8,6 +8,7 @@
 export PATH=/home/ubuntu/.rvm/gems/ruby-1.9.3-p448/bin:$PATH
 
 acceptance_tests () {
+  set -x
   status=0
   i=0
 
@@ -44,8 +45,6 @@ unit_tests () {
       -o $CIRCLE_TEST_REPORTS/rspec/puppet.xml" || status=$?
   return $status
 }
-
-echo "Running on test node $CIRCLE_NODE_INDEX of $CIRCLE_NODE_TOTAL"
 
 case $CIRCLE_NODE_INDEX in
   0)  export RVM=1.9.3
