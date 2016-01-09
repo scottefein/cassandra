@@ -1,5 +1,15 @@
-general:
-  branches:
-    only:
-      - circleci
+---
+# CircleCI configuration file (circle.yml).
+machine:
+  services:
+    - docker
 
+test:
+  override:
+    - BEAKER_set=debian7 bundle exec rake beaker
+
+notify:
+  webhooks:
+    # A list of hook hashes, containing the url field
+    # gitter hook
+    - url: https://webhooks.gitter.im/e/da8c065419a91983f0cf
