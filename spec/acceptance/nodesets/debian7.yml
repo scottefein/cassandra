@@ -6,6 +6,6 @@ HOSTS:
     image: debian:7
     hypervisor: docker
     docker_image_commands:
-      - 'apt-get install -y iptables sudo wget'
+      - 'apt-get install -y iptables iptables-persistent sudo wget'
 CONFIG: 
   type: foss
