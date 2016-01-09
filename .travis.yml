@@ -1,14 +1,13 @@
 ---
+services:
+  - docker
 language: ruby
 bundler_args: --without development
-before_install:
-- openssl aes-256-cbc -K $encrypted_aa8913b81047_key -iv $encrypted_aa8913b81047_iv
-  -in .travis/secrets.tar.enc -out secrets.tar -d
 script:
 - bundle exec rake lint
 - bundle exec rake validate
 - bundle exec rake spec SPEC_OPTS='--format documentation'
-- sh .travis/acceptance.sh
+- BEAKER_set=debian7 bundle exec rake beaker
 notifications:
   email: false
   webhooks:
