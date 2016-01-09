@@ -8,7 +8,8 @@ test:
   override:
     #- BEAKER_destroy=no BEAKER_set=debian7 bundle exec rake beaker
     #- BEAKER_destroy=no BEAKER_set=ubuntu12.04 bundle exec rake beaker
-    - BEAKER_destroy=no BEAKER_set=ubuntu14.04 bundle exec rake beaker
+    #- BEAKER_destroy=no BEAKER_set=ubuntu14.04 bundle exec rake beaker
+    - BEAKER_destroy=no BEAKER_set=centos6 bundle exec rake beaker
 
 notify:
   webhooks:
