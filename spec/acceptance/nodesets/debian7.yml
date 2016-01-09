@@ -1,5 +1,5 @@
 HOSTS:
-  debian-server:
+  debian7:
     roles:
       - master
     platform: debian-7-amd64
