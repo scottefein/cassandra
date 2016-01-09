@@ -8,11 +8,11 @@
 export PATH=/home/ubuntu/.rvm/gems/ruby-1.9.3-p448/bin:$PATH
 
 acceptance_tests () {
-  set -x
   status=0
   i=0
+  BEAKER_NODES="centos6 centos7 debian7 ubuntu"
 
-  for node in $( rake beaker_nodes 2> /dev/null ); do
+  for node in $BEAKER_NODES; do
     if [ $(($i % $CIRCLE_NODE_TOTAL)) -eq $CIRCLE_NODE_INDEX ]; then
       BEAKER_set=$node bundle exec rake beaker || status=$?
     fi
