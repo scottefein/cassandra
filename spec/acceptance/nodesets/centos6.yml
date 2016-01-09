@@ -5,9 +5,12 @@ HOSTS:
     platform: el-6-x86_64
     image: centos:6
     hypervisor: docker
-    docker_cmd: '["/sbin/init"]'
     docker_image_commands:
       - 'yum -y install gcc tar'
+    docker_cmd:
+      - 'sh'
+      - '-c'
+      - 'service sshd start; tail -f /dev/null'
 CONFIG:
   type: foss
   log_level: info
