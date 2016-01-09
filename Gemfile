@@ -9,8 +9,6 @@ group :system_tests do
   gem 'coveralls',              :require => false
   gem 'docker-api',             :require => false
   gem 'beaker-rspec',           :require => false
-  gem 'fog',                    :require => false
-  gem 'fog-google',             '<= 0.0.9'
   gem 'pry',                    :require => false
   gem 'puppet-blacksmith',      :require => false
   gem 'puppetlabs_spec_helper', :require => false
@@ -20,6 +18,4 @@ group :system_tests do
   gem 'metadata-json-lint',     :require => false
   gem 'puppet-lint',            :require => false
   gem 'rspec_junit_formatter',  '0.2.2'
-  gem 'travis',                 :require => false
-  gem 'travis-lint',            :require => false
 end
