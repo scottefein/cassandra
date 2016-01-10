@@ -1,15 +1,14 @@
 HOSTS:
   centos6:
-    ip: 192.168.0.1
     roles:
       - master
     platform: el-6-x86_64
     image: centos:6
     hypervisor: docker
     docker_image_commands:
-      - 'cat /etc/resolv.conf'
+      - sed -ri 's/^#?UsePAM .*/UsePAM no/' /etc/ssh/sshd_config
+      - 'yum clean all'
       - 'yum -y install gcc tar'
-    docker_cmd: '["/sbin/init"]'
 CONFIG:
   type: foss
-  log_level: verbose
+  log_level: trace
