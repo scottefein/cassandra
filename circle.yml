@@ -9,7 +9,8 @@ test:
     #- BEAKER_set=debian7 bundle exec rake beaker
     #- BEAKER_set=ubuntu12.04 bundle exec rake beaker
     #- BEAKER_set=ubuntu14.04 bundle exec rake beaker
-    - BEAKER_set=centos6 bundle exec rake beaker
+    #- BEAKER_set=centos6 bundle exec rake beaker
+    - BEAKER_set=centos7 bundle exec rake beaker
 
 notify:
   webhooks:
