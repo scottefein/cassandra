@@ -60,6 +60,7 @@ class cassandra (
   $dynamic_snitch_badness_threshold                     = 0.1,
   $dynamic_snitch_reset_interval_in_ms                  = 600000,
   $dynamic_snitch_update_interval_in_ms                 = 100,
+  $enable_service                                       = true,
   $endpoint_snitch                                      = 'SimpleSnitch',
   $fail_on_non_supported_os                             = true,
   $fail_on_non_suppoted_os                              = undef,
@@ -283,27 +284,28 @@ class cassandra (
         provider => $::cassandra::service_provider
       }
     }
-
-    if $service_refresh == true {
-      service { 'cassandra':
-        ensure    => $service_ensure,
-        name      => $service_name,
-        enable    => $service_enable,
-        subscribe => [
-          File[$commitlog_directory],
-          File[$config_file],
-          File[$data_file_directories],
-          File[$saved_caches_directory],
-          Ini_setting['rackdc.properties.dc'],
-          Ini_setting['rackdc.properties.rack'],
-          Package[$cassandra_pkg],
-        ]
-      }
-    } else {
-      service { 'cassandra':
-        ensure => $service_ensure,
-        name   => $service_name,
-        enable => $service_enable,
+    if $enable_service == true{
+      if $service_refresh == true {
+        service { 'cassandra':
+          ensure    => $service_ensure,
+          name      => $service_name,
+          enable    => $service_enable,
+          subscribe => [
+            File[$commitlog_directory],
+            File[$config_file],
+            File[$data_file_directories],
+            File[$saved_caches_directory],
+            Ini_setting['rackdc.properties.dc'],
+            Ini_setting['rackdc.properties.rack'],
+            Package[$cassandra_pkg],
+          ]
+        }
+      } else {
+        service { 'cassandra':
+          ensure => $service_ensure,
+          name   => $service_name,
+          enable => $service_enable,
+        }
       }
     }
   }
